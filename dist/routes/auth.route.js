@@ -26,21 +26,21 @@ const express_1 = __importDefault(require("express"));
 // } from "../schemas/schema.createUser";
 // import { authenticate } from "../middleware/deserializeUser";
 // import { requireUser } from "../middleware/requireUser";
-// import { PrismaClient } from "@prisma/client";
-// const prisma = new PrismaClient();
+const client_1 = require("@prisma/client");
+const prisma = new client_1.PrismaClient();
 const router = express_1.default.Router();
 router.post("/login", (req, res, next) => {
     res.json({ user: req.body });
 });
 router.get("/register", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    // const user = await prisma.user.findMany({
-    //   select: {
-    //     username: true,
-    //     email: true,
-    //     role: true,
-    //   },
-    // });
-    res.json({ user: "user" });
+    const user = yield prisma.user.findMany({
+        select: {
+            username: true,
+            email: true,
+            role: true,
+        },
+    });
+    res.json({ user: user });
 }));
 // router.post("/register", validate(createUserSchema), registerHandler);
 // router.post("/login", validate(loginUserSchema), loginHandler);
