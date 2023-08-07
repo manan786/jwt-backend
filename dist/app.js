@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv").config();
 require("module-alias/register");
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const auth_route_1 = __importDefault(require("./routes/auth.route"));
 const helmet_1 = __importDefault(require("helmet"));
@@ -20,7 +21,7 @@ app.use((0, helmet_1.default)());
 // When this header is set to true, it indicates that the server is willing to accept credentials (like cookies or HTTP authentication) in the cross-origin request
 // app.use(credentials);
 //  middleware allows you to define which origins are allowed to access your server's resources
-// app.use(cors(corsOptions));
+app.use((0, cors_1.default)());
 // middleware to parse incoming JSON data from HTTP requests
 // This is a security measure to prevent potential denial-of-service (DoS) attacks
 app.use(express_1.default.json({ limit: "10kb" })); // you are restricting the size of the incoming JSON data to 10 kilobytes
