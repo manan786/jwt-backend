@@ -19,6 +19,11 @@ const prisma = new PrismaClient();
 
 const router = express.Router();
 
+
+
+router.post("/login", validate(loginUserSchema), loginHandler);
+
+router.use(authenticate, requireUser);
 router.get(
   "/register",
   async (req: Request, res: Response, next: NextFunction) => {
@@ -34,11 +39,9 @@ router.get(
 );
 // router.post("/register", validate(createUserSchema), registerHandler);
 
-// router.post("/login", validate(loginUserSchema), loginHandler);
 
 // router.get("/refresh", refreshHandler);
 
-// router.use(authenticate, requireUser);
 
 // router.get("/logout", logoutHandler);
 
