@@ -13,6 +13,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+// import {
+//   loginHandler,
+//   logoutHandler,
+//   refreshHandler,
+//   registerHandler,
+// } from "../controllers/auth.controller";
+// import validate from "../schemas/schema.validate";
+// import {
+//   createUserSchema,
+//   loginUserSchema,
+// } from "../schemas/schema.createUser";
+// import { authenticate } from "../middleware/deserializeUser";
+// import { requireUser } from "../middleware/requireUser";
 const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const router = express_1.default.Router();
