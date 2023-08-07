@@ -13,6 +13,7 @@ const helmet_1 = __importDefault(require("helmet"));
 const config_1 = __importDefault(require("./config/config"));
 // import {connectRedis} from "./utils/connectRedis";
 const app = (0, express_1.default)();
+app.use((0, cors_1.default)({ origin: "*", optionsSuccessStatus: 200 }));
 // Use helmet middleware to set security headers (reduce the risk of various common attacks)
 // helmet provides a strong layer of security
 app.use((0, helmet_1.default)());
@@ -22,7 +23,6 @@ app.use((0, helmet_1.default)());
 // app.use(credentials);
 //  middleware allows you to define which origins are allowed to access your server's resources
 // app.use(cors());
-app.use((0, cors_1.default)({ origin: "*", optionsSuccessStatus: 200 }));
 // middleware to parse incoming JSON data from HTTP requests
 // This is a security measure to prevent potential denial-of-service (DoS) attacks
 app.use(express_1.default.json({ limit: "10kb" })); // you are restricting the size of the incoming JSON data to 10 kilobytes

@@ -13,6 +13,9 @@ import config from './config/config'
 // import {connectRedis} from "./utils/connectRedis";
 const app = express();
 
+app.use(cors({ origin: "*", optionsSuccessStatus: 200 }));
+
+
 // Use helmet middleware to set security headers (reduce the risk of various common attacks)
 // helmet provides a strong layer of security
 app.use(helmet());
@@ -25,7 +28,6 @@ app.use(helmet());
 
 //  middleware allows you to define which origins are allowed to access your server's resources
 // app.use(cors());
-app.use(cors({ origin: "*", optionsSuccessStatus: 200 }));
 
 
 // middleware to parse incoming JSON data from HTTP requests
