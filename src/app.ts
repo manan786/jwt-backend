@@ -13,10 +13,11 @@ import config from './config/config'
 // import {connectRedis} from "./utils/connectRedis";
 const app = express();
 
-app.use(cors({ origin: "*" }));
+// console.log("first")
 
 // Use helmet middleware to set security headers (reduce the risk of various common attacks)
 // helmet provides a strong layer of security
+app.use(cors({ origin: "*" }));
 app.use(helmet());
 
 // add 'Access-Control-Allow-Credentials' in req header
