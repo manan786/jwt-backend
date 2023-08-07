@@ -20,11 +20,11 @@ app.use(helmet());
 // add 'Access-Control-Allow-Credentials' in req header
 // is an HTTP header that allows or denies the sharing of cookies, HTTP authentication
 // When this header is set to true, it indicates that the server is willing to accept credentials (like cookies or HTTP authentication) in the cross-origin request
-app.use(credentials);
+// app.use(credentials);
 
 
 //  middleware allows you to define which origins are allowed to access your server's resources
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 
 // middleware to parse incoming JSON data from HTTP requests
