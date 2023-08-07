@@ -7,11 +7,10 @@
       "config": { "includeFiles": ["dist/**"] }
     }
   ],
-  "headers": {
-    "cors": {
-      "origin": "*",
-      "methods": ["GET", "POST", "PUT", "DELETE"],
-      "headers": ["Content-Type", "Authorization"]
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/index.js"
     }
-  }
+  ]
 }
