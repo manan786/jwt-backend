@@ -24,6 +24,7 @@ const router = express.Router();
 router.post("/login", validate(loginUserSchema), loginHandler);
 
 router.use(authenticate, requireUser);
+
 router.get(
   "/register",
   async (req: Request, res: Response, next: NextFunction) => {
