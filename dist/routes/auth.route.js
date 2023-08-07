@@ -13,12 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-// import { PrismaClient } from "@prisma/client";
+const client_1 = require("@prisma/client");
 const router = express_1.default.Router();
-// const prisma = new PrismaClient();
+const prisma = new client_1.PrismaClient();
 router.get("/register", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    // const user = await prisma.user.findMany({});
-    res.json({ mess: "register" });
+    const user = yield prisma.user.findMany({});
+    res.json({ mess: "register", user });
 }));
 exports.default = router;
 //# sourceMappingURL=auth.route.js.map

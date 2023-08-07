@@ -1,12 +1,12 @@
 require("dotenv").config();
 import express, { NextFunction, Request, Response } from "express";
 // import {connectRedis} from "./utils/connectRedis";
-// import authRouter from "./src/routes/auth.route";
+import authRouter from "./routes/auth.route";
 // import { connectRedis } from "./src/connectRedis";
 import config from "./config/config";
 const app = express();
 
-// app.use("/api/auth", authRouter);
+app.use("/api/auth", authRouter);
 app.get(
   "/",
   (req: Request, res: Response, next: NextFunction) => {

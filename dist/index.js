@@ -7,11 +7,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv").config();
 const express_1 = __importDefault(require("express"));
 // import {connectRedis} from "./utils/connectRedis";
-// import authRouter from "./src/routes/auth.route";
+const auth_route_1 = __importDefault(require("./routes/auth.route"));
 // import { connectRedis } from "./src/connectRedis";
 const config_1 = __importDefault(require("./config/config"));
 const app = (0, express_1.default)();
-// app.use("/api/auth", authRouter);
+app.use("/api/auth", auth_route_1.default);
 app.get("/", (req, res, next) => {
     res.status(200).json({
         status: "success",

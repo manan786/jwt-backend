@@ -16,9 +16,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.1.1",
     "config": "^3.3.9",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "prisma": "^5.1.1",
     "redis": "^4.6.7"
   },
   "devDependencies": {
