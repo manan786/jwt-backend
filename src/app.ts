@@ -13,8 +13,7 @@ import config from './config/config'
 // import {connectRedis} from "./utils/connectRedis";
 const app = express();
 
-app.use(cors({ origin: "*", optionsSuccessStatus: 200 }));
-
+app.use(cors({ origin: "*" }));
 
 // Use helmet middleware to set security headers (reduce the risk of various common attacks)
 // helmet provides a strong layer of security
