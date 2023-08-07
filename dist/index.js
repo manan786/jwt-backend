@@ -9,21 +9,23 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const auth_route_1 = __importDefault(require("./routes/auth.route"));
+const user_route_1 = __importDefault(require("./routes/user.route"));
 const helmet_1 = __importDefault(require("helmet"));
+const Credential_1 = __importDefault(require("./middleware/Credential"));
+const corsOptions_1 = __importDefault(require("./middleware/corsOptions"));
 const config_1 = __importDefault(require("./config/config"));
 // import {connectRedis} from "./utils/connectRedis";
 const app = (0, express_1.default)();
 // console.log("first")
 // Use helmet middleware to set security headers (reduce the risk of various common attacks)
 // helmet provides a strong layer of security
-app.use((0, cors_1.default)({ origin: "*" }));
 app.use((0, helmet_1.default)());
 // add 'Access-Control-Allow-Credentials' in req header
 // is an HTTP header that allows or denies the sharing of cookies, HTTP authentication
 // When this header is set to true, it indicates that the server is willing to accept credentials (like cookies or HTTP authentication) in the cross-origin request
-// app.use(credentials);
+app.use(Credential_1.default);
 //  middleware allows you to define which origins are allowed to access your server's resources
-// app.use(cors());
+app.use((0, cors_1.default)(corsOptions_1.default));
 // middleware to parse incoming JSON data from HTTP requests
 // This is a security measure to prevent potential denial-of-service (DoS) attacks
 app.use(express_1.default.json({ limit: "10kb" })); // you are restricting the size of the incoming JSON data to 10 kilobytes
@@ -32,9 +34,8 @@ app.use((0, cookie_parser_1.default)());
 // 4. Logger
 // if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 // 5. Routes
-// app.use("/api/users", userRouter);
+app.use("/api/users", user_route_1.default);
 app.use("/api/auth", auth_route_1.default);
-// app.use("/api/users", userRouter);
 // 5. Testing
 app.get("/api/healthChecker", (req, res, next) => {
     res.status(200).json({

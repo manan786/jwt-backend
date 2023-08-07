@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import {
   loginHandler,
   logoutHandler,
@@ -13,39 +13,35 @@ import {
 import { authenticate } from "../middleware/deserializeUser";
 import { requireUser } from "../middleware/requireUser";
 import { PrismaClient } from "@prisma/client";
-import { excludeSensitiveFields } from "../utils/helperFunction";
-const excludefields = ["password", "confirmpassword", "refreshToken"];
 const prisma = new PrismaClient();
 
 const router = express.Router();
 
+// router.post("/login",  (req: Request, res: Response, next: NextFunction) => {
+//   res.json({ user: req.body });
+// });
 
+// router.get(
+//   "/register",
+//   async (req: Request, res: Response, next: NextFunction) => {
+//     const user = await prisma.user.findMany({
+//       select: {
+//         username: true,
+//         email: true,
+//         role: true,
+//       },
+//     });
+//     res.json({ user: user });
+//   }
+// );
+router.post("/register", validate(createUserSchema), registerHandler);
 
-router.post("/login",  (req: Request, res: Response, next: NextFunction) => {
-  res.json({ user: req.body });
-});
+router.post("/login", validate(loginUserSchema), loginHandler);
 
-// router.use(authenticate, requireUser);
+router.use(authenticate, requireUser);
 
-router.get(
-  "/register",
-  async (req: Request, res: Response, next: NextFunction) => {
-    const user = await prisma.user.findMany({
-      select: {
-        username: true,
-        email: true,
-        role: true,
-      },
-    });
-    res.json({ user: user });
-  }
-);
-// router.post("/register", validate(createUserSchema), registerHandler);
+router.get("/refresh", refreshHandler);
 
-
-// router.get("/refresh", refreshHandler);
-
-
-// router.get("/logout", logoutHandler);
+router.get("/logout", logoutHandler);
 
 export default router;

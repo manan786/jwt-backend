@@ -9,7 +9,7 @@ import userRouter from "./routes/user.route";
 import helmet from "helmet";
 import credentials from "./middleware/Credential";
 import corsOptions from "./middleware/corsOptions";
-import config from './config/config'
+import config from "./config/config";
 // import {connectRedis} from "./utils/connectRedis";
 const app = express();
 
@@ -17,18 +17,15 @@ const app = express();
 
 // Use helmet middleware to set security headers (reduce the risk of various common attacks)
 // helmet provides a strong layer of security
-app.use(cors({ origin: "*" }));
 app.use(helmet());
 
 // add 'Access-Control-Allow-Credentials' in req header
 // is an HTTP header that allows or denies the sharing of cookies, HTTP authentication
 // When this header is set to true, it indicates that the server is willing to accept credentials (like cookies or HTTP authentication) in the cross-origin request
-// app.use(credentials);
-
+app.use(credentials);
 
 //  middleware allows you to define which origins are allowed to access your server's resources
-// app.use(cors());
-
+app.use(cors(corsOptions));
 
 // middleware to parse incoming JSON data from HTTP requests
 // This is a security measure to prevent potential denial-of-service (DoS) attacks
@@ -41,9 +38,8 @@ app.use(cookieParser());
 // if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 
 // 5. Routes
-// app.use("/api/users", userRouter);
+app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
-// app.use("/api/users", userRouter);
 
 // 5. Testing
 app.get(
