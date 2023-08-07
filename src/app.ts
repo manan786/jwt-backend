@@ -40,7 +40,7 @@ app.use(cookieParser());
 // 5. Routes
 // app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
-app.use("/api/users", userRouter);
+// app.use("/api/users", userRouter);
 
 // 5. Testing
 app.get(
