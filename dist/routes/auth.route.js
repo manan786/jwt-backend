@@ -13,17 +13,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const auth_controller_1 = require("../controllers/auth.controller");
-const schema_validate_1 = __importDefault(require("../schemas/schema.validate"));
-const schema_createUser_1 = require("../schemas/schema.createUser");
-const deserializeUser_1 = require("../middleware/deserializeUser");
-const requireUser_1 = require("../middleware/requireUser");
 const client_1 = require("@prisma/client");
 const excludefields = ["password", "confirmpassword", "refreshToken"];
 const prisma = new client_1.PrismaClient();
 const router = express_1.default.Router();
-router.post("/login", (0, schema_validate_1.default)(schema_createUser_1.loginUserSchema), auth_controller_1.loginHandler);
-router.use(deserializeUser_1.authenticate, requireUser_1.requireUser);
+router.post("/login", (req, res, next) => {
+    res.json({ user: req.body });
+});
+// router.use(authenticate, requireUser);
 router.get("/register", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield prisma.user.findMany({
         select: {

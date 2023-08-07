@@ -21,9 +21,11 @@ const router = express.Router();
 
 
 
-router.post("/login", validate(loginUserSchema), loginHandler);
+router.post("/login",  (req: Request, res: Response, next: NextFunction) => {
+  res.json({ user: req.body });
+});
 
-router.use(authenticate, requireUser);
+// router.use(authenticate, requireUser);
 
 router.get(
   "/register",

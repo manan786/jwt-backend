@@ -24,7 +24,8 @@ app.use(helmet());
 
 
 //  middleware allows you to define which origins are allowed to access your server's resources
-app.use(cors());
+// app.use(cors());
+app.use(cors({ origin: "*", optionsSuccessStatus: 200 }));
 
 
 // middleware to parse incoming JSON data from HTTP requests
