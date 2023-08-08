@@ -39,8 +39,7 @@ export const authenticate = async (
     // }
 
     // verify the user provided
-    const user = await findUserById(decoded.sub);
-    console.log(user, "user");
+    const user = await findUserById(decoded?.sub);
     if (!user) {
       return next(new AppError("User doesn't exist", 401));
     }

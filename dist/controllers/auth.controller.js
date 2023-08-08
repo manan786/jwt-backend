@@ -29,7 +29,7 @@ const accessTokenCookiesOptions = {
 };
 const refreshTokenCookiesOptions = {
     httpOnly: true,
-    secure: config_1.default.app.NODE_ENV == "production",
+    secure: config_1.default.app.NODE_ENV == "production" ? true : false,
     sameSite: "strict",
     expires: new Date(Date.now() + config_1.default.auth.refreshTokenExpiresInMinutes * 60 * 1000), // Cookie will expire after 24 hours
     // maxAge: 86400000, // Cookie will expire after 24 hours
@@ -116,7 +116,7 @@ res, next) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.loginHandler = loginHandler;
 const refreshHandler = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const refreshToken = req.cookies.refreshToken;
+    const refreshToken = req.cookies.refresh_token;
     if (!refreshToken) {
         return next(new appError_1.default("Token isn't valid!", 401));
     }
@@ -231,7 +231,7 @@ const logoutHandler = (req, res, next) => __awaiter(void 0, void 0, void 0, func
         res.clearCookie("refresh_token", Object.assign({}, refreshTokenCookiesOptions));
         // remove user from locally
         res.locals.user = null;
-        res.status(204).json({ status: "success", message: "Logout successfully" });
+        res.status(204); // 204 no-content status
     }
     catch (err) {
         next(err);

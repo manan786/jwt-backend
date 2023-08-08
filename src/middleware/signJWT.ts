@@ -20,6 +20,7 @@ export const verifyJWT = async (token: string, key: 'accessTokenPublicKey'|'refr
     const publicKey = Buffer.from(config.auth?.[key], "base64").toString(
       "ascii"
     );
+    // console.log("publicKey", publicKey);
     return await jwt.verify(token, publicKey);
   } catch (e) {
     console.log(e)

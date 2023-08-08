@@ -42,8 +42,7 @@ const authenticate = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         //   return next(new AppError("Expire User Session!", 401));
         // }
         // verify the user provided
-        const user = yield (0, user_service_1.findUserById)(decoded.sub);
-        console.log(user, "user");
+        const user = yield (0, user_service_1.findUserById)(decoded === null || decoded === void 0 ? void 0 : decoded.sub);
         if (!user) {
             return next(new appError_1.default("User doesn't exist", 401));
         }

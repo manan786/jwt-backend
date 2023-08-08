@@ -19,7 +19,7 @@ const accessTokenCookiesOptions: CookieOptions = {
 
 const refreshTokenCookiesOptions: CookieOptions = {
   httpOnly: true, // Cookie will be accessible only on the server-side, not on the client-side using JavaScript.
-  secure: config.app.NODE_ENV == "production", // Cookie will only be sent over HTTPS
+  secure: config.app.NODE_ENV == "production" ? true : false, // Cookie will only be sent over HTTPS
   sameSite: "strict", // Cookie will be sent only in first-party contexts
   expires: new Date(
     Date.now() + config.auth.refreshTokenExpiresInMinutes * 60 * 1000
@@ -129,7 +129,7 @@ export const refreshHandler = async (
   res: Response,
   next: NextFunction
 ) => {
-  const refreshToken = req.cookies.refreshToken;
+  const refreshToken = req.cookies.refresh_token;
   if (!refreshToken) {
     return next(new AppError("Token isn't valid!", 401));
   }
@@ -150,7 +150,6 @@ export const refreshHandler = async (
         refreshToken: true,
       },
     });
-
     // validating token
     if (!userInfo) {
       const tokenDT = (await verifyJWT(
@@ -272,7 +271,7 @@ export const logoutHandler = async (
     // remove user from locally
     res.locals.user = null;
 
-    res.status(204).json({ status: "success", message: "Logout successfully" });
+    res.status(204); // 204 no-content status
   } catch (err) {
     next(err);
   }

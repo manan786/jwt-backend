@@ -25,6 +25,7 @@ const verifyJWT = (token, key) => __awaiter(void 0, void 0, void 0, function* ()
     var _a;
     try {
         const publicKey = Buffer.from((_a = config_1.default.auth) === null || _a === void 0 ? void 0 : _a[key], "base64").toString("ascii");
+        // console.log("publicKey", publicKey);
         return yield jsonwebtoken_1.default.verify(token, publicKey);
     }
     catch (e) {
