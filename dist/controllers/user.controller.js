@@ -29,9 +29,10 @@ const prisma = new client_1.PrismaClient();
 // };
 const getUsersHandler = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const users = yield prisma.user.findMany({});
+        const users = yield prisma.user.findMany({
+            select: { email: true, username: true, role: true },
+        });
         // const users: User[] = await FetchUsers();
-        //
         if (users) {
             return res.status(200).json({
                 status: "success",
