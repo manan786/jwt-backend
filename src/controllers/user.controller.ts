@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 // import { fetchUsers } from "../services/user.service";
-import {  PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 // const FetchUsers = async () => {
@@ -26,9 +26,10 @@ export const getUsersHandler = async (
   next: NextFunction
 ) => {
   try {
-    const users = await prisma.user.findMany({});
+    const users = await prisma.user.findMany({
+      select: { email: true, username: true, role: true },
+    });
     // const users: User[] = await FetchUsers();
-    //
     if (users) {
       return res.status(200).json({
         status: "success",
