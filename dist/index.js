@@ -9,7 +9,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const auth_route_1 = __importDefault(require("./routes/auth.route"));
-// import userRouter from "./routes/user.route";
+const user_route_1 = __importDefault(require("./routes/user.route"));
 // import morgan from "morgan";
 const helmet_1 = __importDefault(require("helmet"));
 const Credential_1 = __importDefault(require("./middleware/Credential"));
@@ -35,7 +35,7 @@ app.use((0, cookie_parser_1.default)());
 // 4. Logger
 // if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 // 5. Routes
-// app.use("/api/users", userRouter);
+app.use("/api/users", user_route_1.default);
 app.use("/api/auth", auth_route_1.default);
 // 5. Testing
 app.get("/api/healthChecker", (req, res, next) => {

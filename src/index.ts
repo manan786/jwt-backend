@@ -4,7 +4,7 @@ import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.route";
-// import userRouter from "./routes/user.route";
+import userRouter from "./routes/user.route";
 // import morgan from "morgan";
 import helmet from "helmet";
 import credentials from "./middleware/Credential";
@@ -38,7 +38,7 @@ app.use(cookieParser());
 // if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 
 // 5. Routes
-// app.use("/api/users", userRouter);
+app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 
 // 5. Testing
