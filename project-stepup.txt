@@ -97,9 +97,67 @@ docker compose -f docker-compose.dev.yml up --build
 // Eslint
 
 1- npm init @eslint/config
+2- npm i -D prettier
+
+
+ 
+                                             // Git and github 
+
+1- git log --oneline 
+
+
+
+Branches and merging: 
+
+0- git branch -a 	#all local and remote(live) branches are listed
+   git branch -r 	#remote branches are listed
+   git branch 		#only local branches are listed                       
+
+1- git checkout -b <branch-name>        // first create new-branch move quickly in new branch  
+   git branch -b <branch-name>      // first create new-branch move quickly in new branch  
+   git branch <branch-name>
+ 
+2- git checkout <new-branch> 
+   git switch <new-branch>
+
+3- git branch -d <branch-name>         // The -d option will delete the branch only if it has already been            
+                                          pushed merged with the remote branch
+   git branch -D <branch-name>         // Use -D instead if you want to force the branch to be deleted, even if it    
+                                          hasn't been pushed or merged yet
+
+   git push -u origin --delete feature-c    // delete branch from github
+
+
+4- git merge <branch-name>              // go first branch, in which you want to merge code then run command.
+
+
+   Rebasing 
+
+5- 
 
 
 
 
 
+Advance Git
 
+1- Stash
+git stash # To add changes to stash stack
+git stash list # Shows list of stashed changes
+git stash apply stash@{0} # Retrieve stash
+git stash clear  // remove all stash 
+
+# To save a stash with a message:
+git stash push -m "my_stash_name"
+
+# list stashes:
+git stash list
+
+# To pop (i.e. apply and drop) the nth stash:
+git stash pop stash@{n}
+
+#To apply the nth stash:
+git stash apply stash@{n}
+
+# To apply a stash by name:
+git stash apply stash^{/my_stash_name}
