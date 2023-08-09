@@ -96,8 +96,7 @@ docker compose -f docker-compose.dev.yml up --build
 
 // Eslint
 
-1- npm i -g eslint
-2- npx eslint --init
+1- npm init @eslint/config
 
 
 
