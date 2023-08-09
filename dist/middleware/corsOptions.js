@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const globalVal_1 = require("../utils/globalVal");
+const globalVal_1 = require("@utils/globalVal");
 exports.default = {
     origin: (origin, callback) => {
         if (globalVal_1.allowedOrigins.indexOf(origin) !== -1 || !origin) {

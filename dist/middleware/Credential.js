@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const globalVal_1 = require("../utils/globalVal");
-const config_1 = __importDefault(require("../config/config"));
+const globalVal_1 = require("@utils/globalVal");
+const config_1 = __importDefault(require("@config/config"));
 exports.default = (req, res, next) => {
     const origin = req.headers.origin;
     if (config_1.default.app.NODE_ENV === 'production' && !origin) {

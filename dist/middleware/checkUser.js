@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checkUser = void 0;
-const appError_1 = __importDefault(require("../utils/appError"));
+const appError_1 = __importDefault(require("@utils/appError"));
 const checkUser = (allowedRoles) => (req, res, next) => {
     const user = res.locals.user;
     if (!user || !allowedRoles.includes(user.role)) {

@@ -15,10 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.logoutHandler = exports.refreshHandler = exports.loginHandler = exports.registerHandler = void 0;
 const client_1 = require("@prisma/client");
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const appError_1 = __importDefault(require("../utils/appError"));
-const user_service_1 = require("../services/user.service");
-const signJWT_1 = require("../middleware/signJWT");
-const config_1 = __importDefault(require("../config/config"));
+const appError_1 = __importDefault(require("@utils/appError"));
+const user_service_1 = require("@services/user.service");
+const signJWT_1 = require("@middleware/signJWT");
+const config_1 = __importDefault(require("@config/config"));
 const prisma = new client_1.PrismaClient();
 const refreshTokenCookiesOptions = {
     httpOnly: true,

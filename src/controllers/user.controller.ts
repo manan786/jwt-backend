@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-// import { fetchUsers } from "../services/user.service";
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 

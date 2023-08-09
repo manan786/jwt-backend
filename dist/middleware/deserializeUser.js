@@ -13,9 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.authenticate = void 0;
-const signJWT_1 = require("./signJWT");
-const user_service_1 = require("../services/user.service");
-const appError_1 = __importDefault(require("../utils/appError"));
+const signJWT_1 = require("@middleware/signJWT");
+const user_service_1 = require("@services/user.service");
+const appError_1 = __importDefault(require("@utils/appError"));
 const authenticate = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c;
     try {

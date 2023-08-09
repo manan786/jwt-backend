@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginUserSchema = exports.createUserSchema = void 0;
 const client_1 = require("@prisma/client");
 const joi_1 = __importDefault(require("joi"));
-const globalVal_1 = require("../utils/globalVal");
+const globalVal_1 = require("@utils/globalVal");
 const prisma = new client_1.PrismaClient();
 const checkEmailUniqueness = (email) => __awaiter(void 0, void 0, void 0, function* () {
     const users = yield prisma.user.findUnique({

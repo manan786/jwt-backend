@@ -15,7 +15,13 @@
         // "rootDir": ".",
         "baseUrl": ".",
         "paths": {
-            "*": ["node_modules/*", "src/types/*"]
+            "@routes/*": ["src/routes/*"],
+            "@controllers/*": ["src/controllers/*"],
+            "@middleware/*": ["src/middleware/*"],
+            "@schemas/*": ["src/schemas/*"],
+            "@services/*": ["src/services/*"],
+            "@config/*": ["src/config/*"],
+            "@utils/*": ["src/utils/*"],
         }
     },
     "include": ["./src/**/*"], //  include is used in order to specify what files tsc should compile

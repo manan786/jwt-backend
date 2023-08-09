@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
-import { signJWT } from '../middleware/signJWT';
-import config from '../config/config';
-import { excludeSensitiveFields } from '../utils/helperFunction';
+import { signJWT } from '@middleware/signJWT';
+import config from '@config/config';
+import { excludeSensitiveFields } from '@utils/helperFunction';
 const prisma = new PrismaClient();
 
 const excludefields = ['password', 'confirmpassword', 'refreshToken'];
