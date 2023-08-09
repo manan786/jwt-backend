@@ -1,0 +1,106 @@
+npm init -y
+npm install -D typescript
+npx tsc --init
+npm install prisma -g
+prisma init
+npx prisma generate
+npx prisma migrate dev
+npx prisma db push
+
+
+// Script start command
+"start": "ts-node-dev --respawn --transpile-only src/app.ts"
+
+
+
+
+
+
+
+Docker Command's
+
+First of all, I install WSL in PS.
+1- wsl install (type command in cmd)
+
+2- install docker.exe in PC.
+
+Take Docker image pull from Docker-hub.
+3- docker pull hello-world.
+
+Then, Run 'hello-world' image as docker container(when image is run, then container create).
+4- docker run hello-world
+
+check how much docker container is runing
+5- docker ps
+
+stop specific runing container.
+6- docker stop container_id.
+
+stop all runing container
+7- docker kill $(docker ps -q)
+
+delete docker image 
+8- docker rmi <image_id>
+   docker rmi -f <image_id>      // delete image forcely
+
+
+Docker working:
+
+Docker-File  -->  Docker-Image  -->  Docker-Container 
+
+
+Push at Docker Hub:
+
+make a tag
+1- docker tag my-image my-username/my-image:v1.0
+
+then login in terminal
+2- docker login
+
+push at docker hub
+3- docker push my-username/my-image:v1.0
+
+
+Run Docker Compose(yml) file:
+docker compose up -d
+
+Stop Docker Compose file:
+docker compose down
+
+
+
+
+Create own Docker Image
+1- first write dockerfile
+
+run command to make a build image
+2- docker build -t my-app .
+
+run command to run build-image
+3- docker run -d -p 2000:3000 <image-name> 
+
+docker compose -f docker-compose.dev.yml up -d
+docker compose -f docker-compose.dev.yml up --build
+
+
+
+
+// Vercel CLI 
+
+1- npm i -g vercel
+2- vercel              // this is used for dev development
+3- vercel --prod       // this is used for production development
+
+
+
+
+// Eslint
+
+1- npm i -g eslint
+2- npx eslint --init
+
+
+
+
+
+

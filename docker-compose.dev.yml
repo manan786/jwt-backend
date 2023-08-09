@@ -1,0 +1,32 @@
+version: "3.4"
+
+services:
+  redix:
+    image: redis:latest
+    container_name: redix-6.0
+    ports:
+      - '6379:6379'
+    volumes:
+      - redix:/data
+      # - redis-6.0:/data
+  # api:
+  #   build:
+  #     context: .
+  #     target: development
+  #   container_name: api
+  #   volumes:
+  #     - ./:/usr/src/app  # for data persit
+  #     - /usr/src/app/node_modules
+  #   ports:
+  #     - 4000:4000
+  #   command: npm run dev
+  #   environment:
+  #     REDIS_HOST: redix
+  #   depends_on:
+  #     - redix
+volumes:
+  redix:
+
+
+
+

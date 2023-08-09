@@ -1,6 +1,6 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from 'express';
 // import { fetchUsers } from "../services/user.service";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 // const FetchUsers = async () => {
@@ -21,52 +21,48 @@ const prisma = new PrismaClient();
 // };
 
 export const getUsersHandler = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+    req: Request,
+    res: Response,
+    next: NextFunction
 ) => {
-  try {
-    const users = await prisma.user.findMany({
-      select: { email: true, username: true, role: true },
-    });
-    // const users: User[] = await FetchUsers();
-    if (users) {
-      return res.status(200).json({
-        status: "success",
-        message:
-          users?.length > 0 ? "Users fetch successfully" : "No user found!",
-        data: users,
-      });
+    try {
+        const users = await prisma.user.findMany({
+            select: { email: true, username: true, role: true },
+        });
+        // const users: User[] = await FetchUsers();
+        return res.status(200).json({
+            status: 'success',
+            message:
+                users?.length > 0
+                    ? 'Users fetch successfully'
+                    : 'No user found!',
+            data: users,
+        });
+    } catch (err: any) {
+        console.log(err);
+        return next(err);
     }
-  } catch (err: any) {
-    console.log(err);
-    next(err);
-  }
 };
 export const getMeHandler = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+    req: Request,
+    res: Response,
+    next: NextFunction
 ) => {
-  try {
-    // get the user from the response
-    const Loginuser = res.locals.user ?? {};
+    try {
+        // get the user from the response
+        const Loginuser = res.locals.user ?? {};
 
-    // fetch user from the db
-    // const user: User | null = await prisma.user.findUnique({
-    //   where: { id: Loginuser?.id },
-    // });
-
-    //
-    if (Loginuser) {
-      return res.status(200).json({
-        status: "success",
-        message: Loginuser ? "User fetch successfully" : "User not found!",
-        data: Loginuser,
-      });
+        // fetch user from the db
+        // const user: User | null = await prisma.user.findUnique({
+        //   where: { id: Loginuser?.id },
+        // });
+        return res.status(200).json({
+            status: 'success',
+            message: Loginuser ? 'User fetch successfully' : 'User not found!',
+            data: Loginuser ?? null,
+        });
+    } catch (err: any) {
+        console.log(err);
+        return next(err);
     }
-  } catch (err: any) {
-    console.log(err);
-    next(err);
-  }
 };
