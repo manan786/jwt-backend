@@ -46,7 +46,7 @@ module.exports = {
             },
         ],
         '@typescript-eslint/no-var-requires': "off",
-        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-explicit-any": "warn",
         // "no-multi-spaces": "error", // if(foo  === "bar") {}
         // "object-shorthand": ["error", "always"],
         // "prefer-destructuring": ["error", "always"],
