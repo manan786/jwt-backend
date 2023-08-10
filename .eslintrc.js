@@ -24,7 +24,7 @@ module.exports = {
     plugins: ["@typescript-eslint", "prettier"],
     rules: {
         "prettier/prettier": "error",
-        "no-unused-vars": "warn",
+        "no-unused-vars": "off",
         semi: ["error", "always"],
         quotes: ["off", "double"],
         eqeqeq: "error",
@@ -35,7 +35,7 @@ module.exports = {
         "no-undef": ["error"], // disallow undeclared variables
         "no-dupe-keys": ["error"], // Disallow duplicate keys in object
         "no-var": "error",
-        "no-console": "warn",
+        "no-console": "off",
         "consistent-return": "error",
         "prefer-const": [
             // let a = 3; if let define then reassign this var
@@ -46,7 +46,7 @@ module.exports = {
             },
         ],
         '@typescript-eslint/no-var-requires': "off",
-        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-explicit-any": "off",
         // "no-multi-spaces": "error", // if(foo  === "bar") {}
         // "object-shorthand": ["error", "always"],
         // "prefer-destructuring": ["error", "always"],
