@@ -13,7 +13,7 @@ npx prisma db push
 
 
 
-Hello world
+
 
 
 
@@ -133,8 +133,73 @@ Branches and merging:
 
    Rebasing 
 
-5- 
+Diff:  Git Merge logs show you the complete history of commit merging. Git Rebase logs are linear. As the commits are  
+       rebased, the history is altered to reflect this
 
+5- git rebase main-branch 
+
+
+Remote Repository:
+=> Remote repositories are versions of your project that are hosted on the Internet or network somewhere
+  
+1- git remote 
+   git remote -v  
+
+
+Fetch and Pull: 
+=>  tells the local repository that there are changes available in the remote repository without bringing the changes 
+    into the local repository. Git Pull on the other hand brings the copy of the remote directory changes into the local repository
+
+
+1- git fetch
+   git pull 
+
+
+Cherry-pick:
+=> Cherry picking is the act of picking a commit from a branch and applying it to another, by commit hash. 
+   this commit is copy from one branch and paste into another branch. 
+
+
+1- git cherry-pick <commit-hash> 
+
+
+
+Reset, revert, restore :
+
+=> git checkout is used to discard the unstage-changes in the working repository or file 
+
+1- git checkout <filename> or .   
+
+
+=> unstage a file 
+1-  git restore --staged <file-name> or .
+    git reset HEAD <file-name> or .
+
+
+=> remove latest commit
+= Removes the commits from the local repository.
+
+1- git reset HEAD~1            // remove commit, change come into unstaging area
+
+2- git reset --soft HEAD~1     // remove commit, but change return in staging area
+
+3- git reset --hard HEAD~1    // remove commit as well as chnages from the 
+                                 working directory
+
+
+
+=> remove the specific commit
+= Removes the commits from the remote repository.
+
+1- git revert <commit id of the commit that needs to be removed>
+
+
+
+ Git command aliases:
+
+ 1- git config --global alias.alias-name 'original-git-command'
+
+    git alias-name
 
 
 
