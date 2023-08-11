@@ -23,7 +23,7 @@ type configProps = {
 
 const config: configProps = {
     app: {
-        port: 8000,
+        port: 4000,
         origin: 'http://localhost:3000',
         NODE_ENV: process.env.NODE_ENV,
     },
