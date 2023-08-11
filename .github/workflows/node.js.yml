@@ -25,8 +25,6 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
-            - name: Run Checks
-              uses: actions/run-checks@v2
             - name: Run CI command
               run: npm ci
             - name: Run Lint command
