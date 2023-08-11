@@ -35,9 +35,4 @@ jobs:
               run: npm run lint:check
             - name: Run Prettier command
               run: npm run build
-            - name: Vercel Action
-              uses: vercel/vercel@v1
-              with:
-                  project-name: hello
-                  env:
-                      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+            
