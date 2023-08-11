@@ -6,6 +6,7 @@ name: Node.js CI
 on:
     push:
         branches: ['dev']
+        #- ['feature/*','**']
     pull_request:
         branches: ['dev']
 
@@ -17,14 +18,15 @@ jobs:
             matrix:
                 node-version: [18.x]
                 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v3 # action checks-out your repository under $GITHUB_WORKSPACE , so your workflow can access it.
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'npm'
+            - name: Run Checks
+              uses: actions/run-checks@v2
             - name: Run CI command
               run: npm ci
             - name: Run Lint command
@@ -34,6 +36,8 @@ jobs:
             - name: Run Prettier command
               run: npm run build
             - name: Vercel Action
-              uses: amondnet/vercel-action@v25
+              uses: vercel/vercel@v1
               with:
-                  vercel-token: ${{ secrets.VERCEL_TOKEN }}
+                  project-name: my-project
+                  env:
+                      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
