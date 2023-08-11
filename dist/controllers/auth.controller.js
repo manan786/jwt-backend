@@ -64,7 +64,7 @@ const loginHandler = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         res.removeHeader('Set-Cookie');
         res.cookie('refresh_token', refreshToken, Object.assign({}, refreshTokenCookiesOptions));
         RefreshTokenArr.push(refreshToken);
-        yield prisma.user.update({
+        yield prisma.users.update({
             where: { id: user.id },
             data: {
                 refreshToken: {

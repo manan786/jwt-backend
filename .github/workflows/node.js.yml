@@ -33,3 +33,7 @@ jobs:
               run: npm run lint:check
             - name: Run Prettier command
               run: npm run build
+            - name: Deploy to Vercel
+              uses: amondnet/vercel-action@v21
+              with:
+                  vercel-token: ${{ secrets.VERCEL_TOKEN }}
