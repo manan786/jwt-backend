@@ -38,6 +38,6 @@ jobs:
             - name: Vercel Action
               uses: vercel/vercel@v1
               with:
-                  project-name: my-project
+                  project-name: hello
                   env:
                       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
