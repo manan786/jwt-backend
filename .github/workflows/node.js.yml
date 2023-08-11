@@ -27,10 +27,9 @@ jobs:
                   cache: 'npm'
             - name: Run CI command
               run: npm ci
-            - name: Run Lint command
+            - name: Run Prettier command
               run: npm run prettier:check
-            - name: Run Prettier command
+            - name: Run Lint command
               run: npm run lint:check
-            - name: Run Prettier command
+            - name: Run Build command
               run: npm run build
-            
