@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.logoutHandler = exports.refreshHandler = exports.loginHandler = exports.registerHandler = void 0;
 const client_1 = require("@prisma/client");
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const appError_1 = __importDefault(require("../utils/appError"));
 const user_service_1 = require("../services/user.service");
 const signJWT_1 = require("../middleware/signJWT");
@@ -29,7 +29,7 @@ const refreshTokenCookiesOptions = {
 const registerHandler = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const userObj = req.body;
-        const hashedPassword = yield bcrypt_1.default.hash(userObj.password, 10);
+        const hashedPassword = yield bcryptjs_1.default.hash(userObj.password, 10);
         userObj.password = hashedPassword;
         yield prisma.user.create({
             data: userObj,
@@ -52,7 +52,7 @@ const loginHandler = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         const user = yield prisma.user.findUnique({
             where: { email: email },
         });
-        if (!user || !(yield bcrypt_1.default.compare(password, user.password))) {
+        if (!user || !(yield bcryptjs_1.default.compare(password, user.password))) {
             return next(new appError_1.default('Invalid email or password', 401));
         }
         const { accessToken, refreshToken } = yield (0, user_service_1.signToken)({ id: user === null || user === void 0 ? void 0 : user.id });
@@ -64,7 +64,7 @@ const loginHandler = (req, res, next) => __awaiter(void 0, void 0, void 0, funct
         res.removeHeader('Set-Cookie');
         res.cookie('refresh_token', refreshToken, Object.assign({}, refreshTokenCookiesOptions));
         RefreshTokenArr.push(refreshToken);
-        yield prisma.users.update({
+        yield prisma.user.update({
             where: { id: user.id },
             data: {
                 refreshToken: {

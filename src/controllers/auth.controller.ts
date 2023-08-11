@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { CookieOptions, NextFunction, Request, Response } from 'express';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import AppError from '../utils/appError';
 import { signToken } from '../services/user.service';
 import { verifyJWT } from '../middleware/signJWT';
