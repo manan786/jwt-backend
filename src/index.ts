@@ -10,7 +10,7 @@ import userRouter from './routes/user.route';
 import credentials from './middleware/Credential';
 import corsOptions from './middleware/corsOptions';
 import config from './config/config';
-import confisg from './config/configs/sd/';
+// import confisg from './config/configs/sd/';
 // import {connectRedis} from "./utils/connectRedis";
 const app = express();
 // Use helmet middleware to set security headers (reduce the risk of various common attacks)
