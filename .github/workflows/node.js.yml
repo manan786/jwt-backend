@@ -35,11 +35,6 @@ jobs:
               run: npm run lint:check
             - name: Run Build command
               run: npm run build
-            - uses: vercel/vercel@v1
-              with:
-                  project-name: hello
-                  env:
-                      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
     Deploy-Preview:
         needs: [build]
