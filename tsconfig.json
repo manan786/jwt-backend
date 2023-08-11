@@ -13,16 +13,17 @@
         "outDir": "dist",
         "rootDir": "./src",
         // "rootDir": ".",
-        "baseUrl": ".",
-        "paths": {
-            "@routes/*": ["src/routes/*"],
-            "@controllers/*": ["src/controllers/*"],
-            "@middleware/*": ["src/middleware/*"],
-            "@schemas/*": ["src/schemas/*"],
-            "@services/*": ["src/services/*"],
-            "@config/*": ["src/config/*"],
-            "@utils/*": ["src/utils/*"],
-        }
+        // "baseUrl": ".",
+        // "paths": {
+        //     "@routes/*": ["src/routes/*"],
+        //     "@controllers/*": ["src/controllers/*"],
+        //     "@middleware/*": ["src/middleware/*"],
+        //     "@schemas/*": ["src/schemas/*"],
+        //     "@services/*": ["src/services/*"],
+        //     "@config/*": ["src/config/*"],
+        //     "@utils/*": ["src/utils/*"],
+        //     "@prisma/client-c": ["node_modules/@prisma/client/index"]
+        // }
     },
     "include": ["./src/**/*"], //  include is used in order to specify what files tsc should compile
     "exclude": ["node_modules"]

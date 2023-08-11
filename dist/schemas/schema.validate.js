@@ -16,8 +16,8 @@ const validate = (schema) => (req, res, next) => __awaiter(void 0, void 0, void 
         return next();
     }
     catch (err) {
-        err.message = (_c = (_b = (_a = err === null || err === void 0 ? void 0 : err.details) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.message) !== null && _c !== void 0 ? _c : err === null || err === void 0 ? void 0 : err.message;
-        return next(err);
+        const message = (_c = (_b = (_a = err === null || err === void 0 ? void 0 : err.details) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.message) !== null && _c !== void 0 ? _c : err === null || err === void 0 ? void 0 : err.message;
+        return res.status(400).json({ error: message });
     }
 });
 exports.default = validate;

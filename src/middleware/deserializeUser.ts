@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
-import { verifyJWT } from '@middleware/signJWT';
-import { findUserById } from '@services/user.service';
-import AppError from '@utils/appError';
+import { verifyJWT } from '../middleware/signJWT';
+import { findUserById } from '../services/user.service';
+import AppError from '../utils/appError';
 export const authenticate = async (
     req: Request,
     res: Response,

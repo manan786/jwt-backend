@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const globalVal_1 = require("@utils/globalVal");
+const globalVal_1 = require("../utils/globalVal");
 const corsOptions = {
     origin: (origin = '', callback = () => { }) => {
         if (globalVal_1.allowedOrigins.indexOf(origin !== null && origin !== void 0 ? origin : '') !== -1 || !origin) {

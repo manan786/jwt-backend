@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-
 // Create a validation middleware
 const validate =
     (schema: any) =>
@@ -11,8 +10,12 @@ const validate =
             return next();
         } catch (err: any) {
             // console.log(err?.details?.[0]?.message,err)
-            err.message = err?.details?.[0]?.message ?? err?.message;
-            return next(err);
+            const message = err?.details?.[0]?.message ?? err?.message;
+
+            return res.status(400).json({ error: message });
+
+            // return next(err);
+            // return next(new AppError(err));
         }
 
         // if (error) {

@@ -14,9 +14,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.signToken = exports.fetchUsers = exports.findUserById = void 0;
 const client_1 = require("@prisma/client");
-const signJWT_1 = require("@middleware/signJWT");
-const config_1 = __importDefault(require("@config/config"));
-const helperFunction_1 = require("@utils/helperFunction");
+const signJWT_1 = require("../middleware/signJWT");
+const config_1 = __importDefault(require("../config/config"));
+const helperFunction_1 = require("../utils/helperFunction");
 const prisma = new client_1.PrismaClient();
 const excludefields = ['password', 'confirmpassword', 'refreshToken'];
 const findUserById = (userID) => __awaiter(void 0, void 0, void 0, function* () {

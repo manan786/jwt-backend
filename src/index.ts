@@ -5,11 +5,11 @@ import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 // import morgan from "morgan";
-import authRouter from '@routes/auth.route';
-import userRouter from '@routes/user.route';
-import credentials from '@middleware/Credential';
-import corsOptions from '@middleware/corsOptions';
-import config from '@config/config';
+import authRouter from './routes/auth.route';
+import userRouter from './routes/user.route';
+import credentials from './middleware/Credential';
+import corsOptions from './middleware/corsOptions';
+import config from './config/config';
 // import {connectRedis} from "./utils/connectRedis";
 const app = express();
 // Use helmet middleware to set security headers (reduce the risk of various common attacks)
@@ -39,6 +39,11 @@ app.use('/api/users', userRouter);
 app.use('/api/auth', authRouter);
 
 // 5. Testing
+app.get('/', (req: Request, res: Response) => {
+    res.status(200).json({
+        message: "Welcome to Devlixer api's!",
+    });
+});
 app.get('/api/healthChecker', (req: Request, res: Response) => {
     res.status(200).json({
         status: 'success',
@@ -56,7 +61,7 @@ app.all('*', (req: Request, res: Response, next: NextFunction) => {
 app.use((err: any, res: Response) => {
     err.status = err.status || 'error';
     err.statusCode = err.statusCode || 500;
-
+    // console.log('err', err);
     res.status(err.statusCode).json({
         status: err.status,
         message: err.message,

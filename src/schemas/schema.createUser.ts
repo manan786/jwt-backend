@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import Joi from 'joi';
-import { allowedRoles } from '@utils/globalVal';
+import { allowedRoles } from '../utils/globalVal';
 
 const prisma = new PrismaClient();
 

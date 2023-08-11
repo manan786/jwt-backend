@@ -1,4 +1,4 @@
-import { allowedOrigins } from '@utils/globalVal';
+import { allowedOrigins } from '../utils/globalVal';
 
 type Origin = string | null;
 

@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.verifyJWT = exports.signJWT = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const config_1 = __importDefault(require("@config/config"));
+const config_1 = __importDefault(require("../config/config"));
 const signJWT = (payload, key, options = {}) => {
     var _a;
     const privateKey = Buffer.from(((_a = config_1.default.auth) === null || _a === void 0 ? void 0 : _a[key]) || 'accessTokenPrivateKey', 'base64').toString('ascii');

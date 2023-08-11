@@ -4,11 +4,14 @@ import {
     logoutHandler,
     refreshHandler,
     registerHandler,
-} from '@controllers/auth.controller';
-import validate from '@schemas/schema.validate';
-import { loginUserSchema, createUserSchema } from '@schemas/schema.createUser';
-import { authenticate } from '@middleware/deserializeUser';
-import { requireUser } from '@middleware/requireUser';
+} from '../controllers/auth.controller';
+import validate from '../schemas/schema.validate';
+import {
+    loginUserSchema,
+    createUserSchema,
+} from '../schemas/schema.createUser';
+import { authenticate } from '../middleware/deserializeUser';
+import { requireUser } from '../middleware/requireUser';
 
 const router = express.Router();
 

@@ -1,8 +1,8 @@
 import express from 'express';
-import { authenticate } from '@middleware/deserializeUser';
-import { requireUser } from '@middleware/requireUser';
-import { getUsersHandler, getMeHandler } from '@controllers/user.controller';
-import { checkUser } from '@middleware/checkUser';
+import { authenticate } from '../middleware/deserializeUser';
+import { requireUser } from '../middleware/requireUser';
+import { getUsersHandler, getMeHandler } from '../controllers/user.controller';
+import { checkUser } from '../middleware/checkUser';
 
 const router = express.Router();
 
