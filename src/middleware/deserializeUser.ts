@@ -8,7 +8,7 @@ export const authenticate = async (
     next: NextFunction
 ) => {
     try {
-        let accessToken;
+        let accessToken: string | undefined;
         // Get the token from the request headers or query parameters or cookies
         if (
             req.headers.authorization &&
@@ -49,7 +49,6 @@ export const authenticate = async (
 
         // store the user in the response
         res.locals.user = user;
-
         return next();
     } catch (err: any) {
         console.log(err);

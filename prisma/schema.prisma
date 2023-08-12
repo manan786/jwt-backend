@@ -18,7 +18,7 @@ model User {
   password        String
   confirmpassword String
   refreshToken    String[]
-  role            userRole @default(client)
+  role            userRole @default(admin)
 }
 
 enum userRole {
